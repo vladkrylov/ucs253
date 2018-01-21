@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Enter some text to ROT13:</h1>
+
+<form action="/rot13" id="rot13form" method="post">
+  <textarea rows="10" cols="80" form="rot13form" name="{{input_name}}" required>{{usertext}}</textarea>
+  <br>
+  <input type="submit" value="Submit" form="rot13form">
+</form>
+<!-- <div> -->
+<!-- <textarea rows="10" cols="80" form="rot13form" required>{{usertext}}</textarea> -->
+<!-- <br> -->
+<!-- <input type="submit" value="Submit" form="rot13form"> -->
+<!-- </div> -->
+
+{% endblock %}
+
