@@ -1,6 +1,6 @@
 from app import app
-from flask import render_template, make_response, request
-
+from flask import render_template, make_response, request, redirect, url_for
+from app.models import rot13alg
 
 @app.route('/')
 @app.route('/index')
@@ -44,4 +44,18 @@ def testform():
     return make_response((request.get_data(),
                           200,
                           headers))
+
+
+@app.route('/rot13', methods=('GET', 'POST'))
+def rot13():
+    textarea_name = 'textarea'
+    if request.method == 'POST':
+        user_input = request.form.get(textarea_name)
+        conversion_result = rot13alg(user_input)
+        return redirect(url_for('rot13', conversion_result=conversion_result))
+    print(request)
+    usertext = request.args.get('conversion_result')
+    return render_template('rot13.html',
+                           input_name=textarea_name,
+                           usertext=usertext)
 
