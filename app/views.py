@@ -53,7 +53,7 @@ def rot13():
         user_input = request.form.get(textarea_name)
         conversion_result = rot13alg(user_input)
         return redirect(url_for('rot13', conversion_result=conversion_result))
-    print(request)
+    
     usertext = request.args.get('conversion_result')
     return render_template('rot13.html',
                            input_name=textarea_name,

@@ -1,5 +1,3 @@
-import html
-
 def rot13alg(s):
     result = ''
     roi = [(ord('a'), ord('z')),
@@ -15,5 +13,6 @@ def rot13alg(s):
                 break
         else:
             result += c
-    return html.escape(result)
+    # do not escape html because flask will do it for us
+    return result
 
